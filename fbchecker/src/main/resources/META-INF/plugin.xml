@@ -1,0 +1,28 @@
+<idea-plugin>
+    <id>submission_package.FirebaseDbBChecker</id>
+    <name>Firebase Database Access Checker</name>
+    <vendor email="" url=""></vendor>
+
+    <description><![CDATA[
+    This plugin helps you check if your Firebase database is publicly readable/writable.</em>
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+    <depends optional="true">org.jetbrains.kotlin</depends>
+
+    <idea-version since-build="174.0"/>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <action id="submission_package.FirebaseDbBChecker.Check" class="submission_package.FirebaseDbBChecker" text="_Check Firebase Access" description="Start checking my Firebase database.">
+            <add-to-group group-id="ToolsMenu" anchor="first"  />
+        </action>
+    </actions>
+</idea-plugin>
