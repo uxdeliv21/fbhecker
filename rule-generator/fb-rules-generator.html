@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -161,10 +160,36 @@
 
         var doesUserHaveXAccount = "\n\t\tfunction doesUserHaveXAccount(domain) {" +
             "\n\t\t   domain = domain.replace('.', '\\.');" +
-            "\n\t\t   return request.auth.token.email.matches('.*@' + domain + '$’)" +
+            "\n\t\t   return request.auth.token.email.matches('.*@' + domain + '$')" +
             "\n\t\t      && request.auth.token.email_verified;" +
             "\n\t\t}";
 
+        var isSignedIn = "\n\t\t// is the user logged in?" +
+            "\n\t\tfunction isSignedIn() {" +
+            "\n\t\t   return request.auth != null;" +
+            "\n\t\t}";
+
+        var emailVerified = "\n\t\t// is the user e-mail verified?" +
+            "\n\t\tfunction emailVerified() {" +
+            "\n\t\t   return request.auth.token.email_verified;" +
+            "\n\t\t}";
+
+        var userExists = "\n\t\t// is the user logged in?" +
+            "\n\t\tfunction userExists() {" +
+            "\n\t\t   return exists(/databases/$(database)/documents/users/$(request.auth.uid));" +
+            "\n\t\t}";
+
+        var isUserMatchLoggedIn = "\n\t\tfunction isUserMatchLoggedIn(userId) {" +
+            "\n\t\treturn request.auth.uid == userId;" +
+            "\n\t\t}";
+
+        var getUserData = "\n\t\tfunction getUserData() {" +
+            "\n\t\t   return get(/databases/$(database)/documents/accounts/$(request.auth.uid)).data" +
+            "\n\t\t}";
+
+        var userEmail = "\n\t\tfunction userEmail(userId) {" +
+            "\n\t\t   return get(/databases/$(database)/documents/users/$(userId)).data.email;" +
+            "\n\t\t}";
 
         console.table(user_data_path);
 
@@ -212,6 +237,12 @@
             "\n\t\t" + isAuthorOrAdmin +
             "\n\t\t" + isAdmin +
             "\n\t\t" + doesUserHaveXAccount +
+            "\n\t\t" + isSignedIn +
+            "\n\t\t" + emailVerified +
+            "\n\t\t" + userExists +
+            "\n\t\t" + isUserMatchLoggedIn +
+            "\n\t\t" + getUserData +
+            "\n\t\t" + userEmail +
             "\n\t}\n}";
 
         console.table(rule);
