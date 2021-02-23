@@ -4,7 +4,7 @@ This is an Android Studio plug-in that assists you to easily check the accessbib
 
 # How to use
 
-Build the plug-in project and install the plugin into Android Studio. 
+Build the plug-in project and install the plugin on Android Studio. 
 
 Run the plug-in by clicking on Tools > Check Firebase Access
 
